@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const connectDatabase = require("./src/config/db");
 const userRoute = require("./src/routes/userRoute");
+const classesRoute = require("./src/routes/classesRoute");
 require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5001;
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/users", userRoute);
+app.use("/api/classes", classesRoute);
 
 app.get("/", (req, res) => {
   res.status(200).json({
